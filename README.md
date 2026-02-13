@@ -4,21 +4,21 @@ A Twitter/X-like social media platform with AI-powered news search capabilities.
 
 **Team Size:** 2 Developers
 
-## 🎯 Features
+## Features
 
-- 🔐 **Authentication**: JWT + Google OAuth ✅
-- 📝 **Posts**: Create, edit, delete posts with images
-- 💬 **Comments**: Comment on posts
-- ❤️ **Likes**: Like/unlike posts
-- 🔍 **Real-Time Web Search**: OpenAI Web Search tool for actual news ✅
-- 🛡️ **Security**: Input sanitization & XSS prevention ✅
-- 👤 **User Profiles**: View and edit profiles with Google profile images
-- 📱 **Responsive UI**: Modern React frontend
-- 📚 **API Documentation**: Swagger/OpenAPI
-- ✅ **Testing**: Jest unit tests (30+)
-- 🔑 **Google Sign-In**: One-click authentication with Google
+- **Authentication**: JWT + Google OAuth ✅
+- **Posts**: Create, edit, delete posts with images
+- **Comments**: Comment on posts
+- **Likes**: Like/unlike posts
+- **Real-Time Web Search**: OpenAI Web Search tool for actual news ✅
+- **Security**: Input sanitization & XSS prevention ✅
+- **User Profiles**: View and edit profiles with Google profile images
+- **Responsive UI**: Modern React frontend
+- **API Documentation**: Swagger/OpenAPI
+- **Testing**: Jest unit tests (30+)
+- **Google Sign-In**: One-click authentication with Google
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 ### Backend
 - Node.js + Express
@@ -36,7 +36,7 @@ A Twitter/X-like social media platform with AI-powered news search capabilities.
 - React Hook Form
 - Axios
 
-## 📋 Prerequisites
+## Prerequisites
 
 Before you begin, ensure you have:
 - **Node.js 18+** installed
@@ -45,13 +45,11 @@ Before you begin, ensure you have:
 - **Git** installed
 - **Text editor** (VS Code recommended)
 
-## 🚀 Quick Installation
+## Quick Installation
 
 ### Step 1: Install Backend Dependencies
 
 ```bash
-# Navigate to project root
-cd /Users/talcohen/Documents/colman/AdvWebApp-Final-project
 
 # Install backend dependencies
 npm install
@@ -127,8 +125,6 @@ echo "REACT_APP_API_URL=http://localhost:4000" > .env
 # Install frontend dependencies
 npm install
 ```
-
-**Note:** The frontend uses TypeScript 5.x with `legacy-peer-deps=true` (configured in `.npmrc`). This is safe and allows us to use modern TypeScript features. See `TYPESCRIPT_VERSION.md` for details.
 
 ### Step 5: Run the Application
 
@@ -350,37 +346,8 @@ rm -rf node_modules package-lock.json
 npm install --registry=https://registry.npmjs.org/
 ```
 
-## 📖 Documentation
 
-Comprehensive guides available:
-
-1. **INSTALLATION.md** - Detailed installation steps
-2. **GETTING_STARTED.md** - Features and usage guide
-3. **QUICK_REFERENCE.md** - API endpoints and commands
-4. **DEPLOYMENT.md** - Production deployment guide
-5. **GITHUB_SECRETS.md** - CI/CD secrets setup
-6. **ARCHITECTURE.md** - System architecture
-7. **PROJECT_SUMMARY.md** - Complete feature list
-8. **FINAL_SUMMARY.md** - Project overview
-
-## 🎓 First Time Setup Checklist
-
-- [ ] Node.js 18+ installed
-- [ ] MongoDB running
-- [ ] OpenAI API key obtained
-- [ ] Backend dependencies installed (`npm install`)
-- [ ] Frontend dependencies installed (`cd frontend && npm install`)
-- [ ] `.env` file created and configured
-- [ ] `uploads/` directory created
-- [ ] Backend running (`npm run dev`)
-- [ ] Frontend running (`cd frontend && npm start`)
-- [ ] Visited http://localhost:4000/api-docs
-- [ ] Visited http://localhost:3000
-- [ ] Registered a test user
-- [ ] Created a test post
-- [ ] Tested AI search
-
-## 🚀 Development Workflow
+## Development Workflow
 
 ```bash
 # Terminal 1 - Backend with auto-reload
@@ -393,7 +360,7 @@ cd frontend && npm start
 npm run test:watch
 ```
 
-## 🚀 Production Deployment
+## Production Deployment
 
 ### Deployment Method
 
