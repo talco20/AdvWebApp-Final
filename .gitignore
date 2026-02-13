@@ -1,0 +1,48 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+frontend/build/
+
+# Environment variables - Never commit actual secrets!
+.env
+.env.local
+.env.production
+.env.production.local
+.env.development
+.env.development.local
+!.env.example
+!.env.production.example
+!frontend/.env.production
+!frontend/.env.development
+
+# Uploads
+uploads/
+
+# Coverage
+coverage/
+
+# Logs
+*.log
+npm-debug.log*
+backend.log
+frontend.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Test
+*.test.js
+
+# Documentation - ignore all .md files except README.md
+*.md
+!README.md
+
