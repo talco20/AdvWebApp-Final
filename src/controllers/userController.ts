@@ -139,9 +139,9 @@ export const updateCurrentUser = async (req: AuthRequest, res: Response): Promis
       if (username !== user.username) {
         try {
           user.embedding = await generateUserEmbedding(username, user.email);
-          console.log('✅ Regenerated embedding for updated user');
+          console.log('Regenerated embedding for updated user');
         } catch (embError: any) {
-          console.error('⚠️ Failed to regenerate embedding:', embError.message);
+          console.error('Failed to regenerate embedding:', embError.message);
         }
       }
       

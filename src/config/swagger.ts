@@ -90,7 +90,7 @@ export const setupSwagger = (app: Express): void => {
     res.send(swaggerSpec);
   });
 
-  console.log(`📚 Swagger documentation available at http://localhost:${config.port}/api-docs`);
+  console.log(`Swagger documentation available at http://localhost:${config.port}/api-docs`);
 };
 
 

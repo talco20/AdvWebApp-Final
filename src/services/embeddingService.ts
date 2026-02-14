@@ -24,7 +24,7 @@ export const generateEmbedding = async (text: string): Promise<number[]> => {
     // Clean and prepare text for embedding
     const cleanedText = text.trim().substring(0, 8000); // OpenAI has a limit
 
-    console.log(`🔍 Generating embedding for text (${cleanedText.length} chars)...`);
+    console.log(`Generating embedding for text (${cleanedText.length} chars)...`);
 
     // Use OpenAI's embedding model (text-embedding-3-small is cost-effective)
     // text-embedding-3-small produces 1536-dimensional vectors
@@ -35,7 +35,7 @@ export const generateEmbedding = async (text: string): Promise<number[]> => {
     });
 
     const embedding = response.data[0].embedding;
-    console.log(`✅ Generated embedding with ${embedding.length} dimensions`);
+    console.log(`Generated embedding with ${embedding.length} dimensions`);
 
     return embedding;
   } catch (error: any) {

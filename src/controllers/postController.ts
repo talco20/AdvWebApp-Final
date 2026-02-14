@@ -199,9 +199,9 @@ export const createPost = async (req: AuthRequest, res: Response): Promise<void>
     let embedding: number[] | undefined;
     try {
       embedding = await generatePostEmbedding(content, username);
-      console.log('✅ Generated embedding for new post');
+      console.log('Generated embedding for new post');
     } catch (embError: any) {
-      console.error('⚠️ Failed to generate embedding:', embError.message);
+      console.error('Failed to generate embedding:', embError.message);
       // Continue without embedding - don't fail the entire request
     }
 
@@ -289,9 +289,9 @@ export const updatePost = async (req: AuthRequest, res: Response): Promise<void>
         const user = await User.findById(userId);
         const username = user?.username;
         post.embedding = await generatePostEmbedding(content, username);
-        console.log('✅ Regenerated embedding for updated post');
+        console.log('Regenerated embedding for updated post');
       } catch (embError: any) {
-        console.error('⚠️ Failed to regenerate embedding:', embError.message);
+        console.error('Failed to regenerate embedding:', embError.message);
         // Continue without updating embedding
       }
     }

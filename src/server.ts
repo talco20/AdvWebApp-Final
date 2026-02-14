@@ -22,10 +22,10 @@ const startServer = async (): Promise<void> => {
       // HTTPS server
       https.createServer(options, app).listen(config.httpsPort, () => {
         console.log('');
-        console.log('🚀 Server started successfully!');
-        console.log(`📡 HTTPS Server running on port ${config.httpsPort}`);
-        console.log(`🌍 Environment: ${config.nodeEnv}`);
-        console.log(`📚 Application: https://node56.cs.colman.ac.il`);
+        console.log('Server started successfully!');
+        console.log(`HTTPS Server running on port ${config.httpsPort}`);
+        console.log(`Environment: ${config.nodeEnv}`);
+        console.log(`Application: https://node56.cs.colman.ac.il`);
         console.log('');
       });
       
@@ -35,21 +35,21 @@ const startServer = async (): Promise<void> => {
         res.redirect(301, `https://${req.headers.host}${req.url}`);
       });
       httpApp.listen(config.httpPort, () => {
-        console.log(`🔄 HTTP redirect server running on port ${config.httpPort}`);
+        console.log(`HTTP redirect server running on port ${config.httpPort}`);
       });
     } else {
       // HTTP server for development
       http.createServer(app).listen(config.port, () => {
         console.log('');
-        console.log('🚀 Server started successfully!');
-        console.log(`📡 HTTP Server running on port ${config.port}`);
-        console.log(`🌍 Environment: ${config.nodeEnv}`);
-        console.log(`📚 API Documentation: http://localhost:${config.port}/api-docs`);
+        console.log('Server started successfully!');
+        console.log(`HTTP Server running on port ${config.port}`);
+        console.log(`Environment: ${config.nodeEnv}`);
+        console.log(`API Documentation: http://localhost:${config.port}/api-docs`);
         console.log('');
       });
     }
   } catch (error) {
-    console.error('❌ Failed to start server:', error);
+    console.error('Failed to start server:', error);
     process.exit(1);
   }
 };

@@ -104,7 +104,7 @@ export const searchNews = async (query: string): Promise<NewsSearchResult[]> => 
 
     // Sanitize user input
     const sanitizedQuery = sanitizeInput(query);
-    console.log(`🔍 Searching web for: "${sanitizedQuery}" using OpenAI Web Search...`);
+    console.log(`Searching web for: "${sanitizedQuery}" using OpenAI Web Search...`);
 
     // Use OpenAI Responses API with web_search tool
     const response = await (openai as any).responses.create({
@@ -126,17 +126,17 @@ For each article found, provide:
 Format the response as a JSON object with an "articles" array.`,
     });
 
-    console.log('✅ Web search completed');
-    console.log('📦 Full Response Object:', JSON.stringify(response, null, 2));
+    console.log('Web search completed');
+    console.log('Full Response Object:', JSON.stringify(response, null, 2));
     
     // Extract the output
     const outputText = response.output_text || response.output || '';
     
-    console.log('📝 Output Text:', outputText);
-    console.log('📝 Output Text Length:', outputText.length);
+    console.log('Output Text:', outputText);
+    console.log('Output Text Length:', outputText.length);
     
     if (!outputText) {
-      console.error('❌ No output text in response. Response keys:', Object.keys(response));
+      console.error('No output text in response. Response keys:', Object.keys(response));
       throw new Error('No response from OpenAI Web Search');
     }
 
@@ -144,53 +144,53 @@ Format the response as a JSON object with an "articles" array.`,
     let results: NewsSearchResult[] = [];
     
     try {
-      console.log('🔍 Attempting to parse JSON from response...');
+      console.log('Attempting to parse JSON from response...');
       
       // Try to extract JSON from the response
       const jsonMatch = outputText.match(/\{[\s\S]*\}/);
       
       if (jsonMatch) {
-        console.log('✅ Found JSON in response');
-        console.log('📄 JSON String:', jsonMatch[0].substring(0, 500) + '...');
+        console.log('Found JSON in response');
+        console.log('JSON String:', jsonMatch[0].substring(0, 500) + '...');
         
         const parsed = JSON.parse(jsonMatch[0]);
-        console.log('✅ Successfully parsed JSON');
-        console.log('📊 Parsed Object Keys:', Object.keys(parsed));
+        console.log('Successfully parsed JSON');
+        console.log('Parsed Object Keys:', Object.keys(parsed));
         
         // Handle different response formats
         if (Array.isArray(parsed)) {
-          console.log('📋 Response is an array, length:', parsed.length);
+          console.log('Response is an array, length:', parsed.length);
           results = parsed;
         } else if (parsed.articles && Array.isArray(parsed.articles)) {
-          console.log('📋 Found "articles" array, length:', parsed.articles.length);
+          console.log('Found "articles" array, length:', parsed.articles.length);
           results = parsed.articles;
         } else if (parsed.results && Array.isArray(parsed.results)) {
-          console.log('📋 Found "results" array, length:', parsed.results.length);
+          console.log('Found "results" array, length:', parsed.results.length);
           results = parsed.results;
         } else if (parsed.news && Array.isArray(parsed.news)) {
-          console.log('📋 Found "news" array, length:', parsed.news.length);
+          console.log('Found "news" array, length:', parsed.news.length);
           results = parsed.news;
         } else {
-          console.log('📋 Extracting objects with "title" field from parsed object');
+          console.log('Extracting objects with "title" field from parsed object');
           // Extract any array of objects with title field
           results = Object.values(parsed).filter((item: any) => 
             item && typeof item === 'object' && item.title
           ) as NewsSearchResult[];
-          console.log('📋 Extracted results count:', results.length);
+          console.log('Extracted results count:', results.length);
         }
         
-        console.log('📰 Raw results before sanitization:', JSON.stringify(results, null, 2));
+        console.log('Raw results before sanitization:', JSON.stringify(results, null, 2));
       } else {
-        console.warn('⚠️ No JSON found in response text');
+        console.warn('No JSON found in response text');
       }
     } catch (parseError: any) {
-      console.error('❌ Failed to parse JSON from response:', parseError.message);
-      console.error('📄 Problematic text:', outputText.substring(0, 500));
+      console.error('Failed to parse JSON from response:', parseError.message);
+      console.error('Problematic text:', outputText.substring(0, 500));
       // If JSON parsing fails, return empty array
       results = [];
     }
 
-    console.log(`📊 Results count before sanitization: ${results.length}`);
+    console.log(`Results count before sanitization: ${results.length}`);
 
     // Sanitize the results and normalize field names (OpenAI uses Title/Summary/URL instead of title/summary/url)
     results = results.map((result: any, index) => {
@@ -205,7 +205,7 @@ Format the response as a JSON object with an "articles" array.`,
         source: result.source || result.Source,
       };
       
-      console.log(`🧹 Sanitizing result ${index + 1}:`, {
+      console.log(`Sanitizing result ${index + 1}:`, {
         title: normalizedResult.title,
         summary: normalizedResult.summary?.substring(0, 50) + '...',
         url: normalizedResult.url,
@@ -223,8 +223,8 @@ Format the response as a JSON object with an "articles" array.`,
       };
     });
 
-    console.log(`📰 Found ${results.length} news articles after sanitization`);
-    console.log('✅ Final results:', JSON.stringify(results, null, 2));
+    console.log(`Found ${results.length} news articles after sanitization`);
+    console.log('Final results:', JSON.stringify(results, null, 2));
 
     return results.slice(0, 5);
   } catch (error: any) {

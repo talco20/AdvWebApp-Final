@@ -149,16 +149,16 @@ export const register = async (req: Request, res: Response): Promise<void> => {
     let profileImage: string | undefined;
     if (req.file) {
       profileImage = `/uploads/${req.file.filename}`;
-      console.log('✅ Profile image uploaded:', profileImage);
+      console.log('Profile image uploaded:', profileImage);
     }
 
     // Generate embedding for the user
     let embedding: number[] | undefined;
     try {
       embedding = await generateUserEmbedding(username, email);
-      console.log('✅ Generated embedding for new user');
+      console.log('Generated embedding for new user');
     } catch (embError: any) {
-      console.error('⚠️ Failed to generate embedding:', embError.message);
+      console.error('Failed to generate embedding:', embError.message);
       // Continue without embedding - don't fail the entire registration
     }
 
@@ -465,9 +465,9 @@ export const googleAuth = async (req: Request, res: Response): Promise<void> => 
       let embedding: number[] | undefined;
       try {
         embedding = await generateUserEmbedding(newUsername, email);
-        console.log('✅ Generated embedding for new Google user');
+        console.log('Generated embedding for new Google user');
       } catch (embError: any) {
-        console.error('⚠️ Failed to generate embedding:', embError.message);
+        console.error('Failed to generate embedding:', embError.message);
       }
       
       user = new User({
